@@ -1,0 +1,51 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/springai
+    type: com.zaxxer.hikari.HikariDataSource
+  ai:
+#    openai:
+#      base-url: https://api.deepseek.com
+#      api-key: sk-47ec934d53744bf0b8327ba65d98045f
+#      chat:
+#        options:
+#          model: deepseek-chat
+#          #aiml
+    openai:
+      base-url: https://api.aimlapi.com
+      api-key: 67329b78eb0a480ca15390eab63a93a7
+      chat:
+        options:
+          model: gpt-4o
+      embedding:
+        options:
+          model: text-embedding-3-small
+    ollama:
+      base-url: http://9080c25dcb6e417b9ce7-deepseek-r1-llm-api.gcs-xy1a.jdcloud.com
+      embedding:
+        model: nomic-embed-text
+        options:
+          num-batch: 768
+#      七牛云
+#      base-url: https://openai.qiniu.com
+#      api-key: sk-cf7b0ee9493a412b3017ff29324363de403ba5d5fe2199383085d90434952c94
+#      chat:
+#        options:
+#          model: gpt-oss-120b
+#      embedding-model: text-embedding-ada-002
+#      embedding:
+#        options:
+#          num-batch: 1536
+
+
+
+logging:
+  level:
+    root: info
+  config: classpath:logback-spring.xml
+

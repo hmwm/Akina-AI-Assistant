@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/HS200/Desktop",
+        "/Users/HS200/Desktop"
+      ]
+    }
+  }
+}
