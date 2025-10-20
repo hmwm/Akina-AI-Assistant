@@ -9,6 +9,7 @@ import org.springframework.ai.chat.client.observation.ChatClientObservationConve
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiEmbeddingModel;
 import org.springframework.ai.openai.api.OpenAiApi;
@@ -123,4 +124,8 @@ public class OpenaiConfig {
     public ChatMemory chatMemory() {
         return new InMemoryChatMemory();
     }
+//    @Bean
+//    public ChatClient.Builder chatClientBuilder(OpenAiChatModel openAiChatModel) {
+//        return ChatClient.builder(openAiChatModel, ObservationRegistry.NOOP, (ChatClientObservationConvention) null);
+//    }
 }

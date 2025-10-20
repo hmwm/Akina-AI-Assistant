@@ -9,22 +9,26 @@ spring:
     url: jdbc:postgresql://localhost:5432/springai
     type: com.zaxxer.hikari.HikariDataSource
   ai:
-#    openai:
-#      base-url: https://api.deepseek.com
-#      api-key: sk-47ec934d53744bf0b8327ba65d98045f
-#      chat:
-#        options:
-#          model: deepseek-chat
-#          #aiml
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:/config/mcp-servers-config.json
     openai:
-      base-url: https://api.aimlapi.com
-      api-key: 67329b78eb0a480ca15390eab63a93a7
+      base-url: https://api.deepseek.com
+      api-key: sk-47ec934d53744bf0b8327ba65d98045f
       chat:
         options:
-          model: gpt-4o
-      embedding:
-        options:
-          model: text-embedding-3-small
+          model: deepseek-chat
+          #aiml
+#    openai:
+#      base-url: https://api.aimlapi.com
+#      api-key: 67329b78eb0a480ca15390eab63a93a7
+#      chat:
+#        options:
+#          model: gpt-4o
+#      embedding:
+#        options:
+#          model: text-embedding-3-small
     ollama:
       base-url: http://9080c25dcb6e417b9ce7-deepseek-r1-llm-api.gcs-xy1a.jdcloud.com
       embedding:

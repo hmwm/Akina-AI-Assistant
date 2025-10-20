@@ -1,12 +1,21 @@
 {
   "mcpServers": {
     "filesystem": {
-      "command": "npx",
+      "command": "D:\\DevTools\\nodejs\\npx.cmd",
       "args": [
         "-y",
+        "--verbose",
         "@modelcontextprotocol/server-filesystem",
-        "/Users/HS200/Desktop",
-        "/Users/HS200/Desktop"
+        "E:\\MCP_test",
+        "E:\\MCP_test"
+      ]
+    },
+    "mcp-server-computer": {
+      "command": "java",
+      "args": [
+        "-Dspring.ai.mcp.server.stdio=true",
+        "-jar",
+        "C:\\Users\\HS200\\.m2\\repository\\com\\akina\\mcp-server-computer\\1.0.0\\mcp-server-computer-1.0.0.jar"
       ]
     }
   }
