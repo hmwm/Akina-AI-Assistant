@@ -300,8 +300,8 @@ docker-compose logs -f
 ## 📞 联系方式
 
 - 项目维护者: Akina Team
-- 邮箱: [your-email@example.com]
-- 项目链接: [https://github.com/your-username/Akina-AI-Assistant](https://github.com/your-username/Akina-AI-Assistant)
+- 邮箱: [1037462262@qq.com]
+- 项目链接: [https://github.com/hmwm/Akina-AI-Assistant](https://github.com/your-username/Akina-AI-Assistant)
 
 ## 🙏 致谢
 
