@@ -28,8 +28,6 @@ public class MCPTest {
         String userInput = "有哪些工具可以使用";
         userInput = "有哪些服务可用,假设要使用的话，这个工具你会传入什么参数去调用（不用实际去做）";
 
-
-
         System.out.println("\n>>> Question: " + userInput);
         System.out.println("\n>>> Assistant: " + chatClient.prompt(userInput).call().content());
     }
