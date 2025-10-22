@@ -1,43 +1,35 @@
-package com.akina.knowledge.test;
+package com.akina.knowledge.domain;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.ollama.api.OllamaOptions;
-import org.springframework.ai.tool.ToolCallbackProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Slf4j
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class MCPTest {
+@Service
+public class McpServerHaloJob {
 
     @Resource
     private ChatClient chatClient;
 
-//    @Autowired
-//    private ToolCallbackProvider tools;
 
-    @Test
-    public void test_tool() {
-        String userInput = "有哪些工具可以使用";
-        userInput = "有哪些服务可用,假设要使用的话，这个工具你会传入什么参数去调用（不用实际去做）";
+    // @Scheduled(cron = "0 */5 * * * ?")
+    @Scheduled(cron = "0 * * * * ?")
+    public void exec() {
+        // 检查当前时间是否在执行的时间范围内（8点到23点之间）
+        int currentHour = LocalDateTime.now().getHour();
+        if (currentHour >= 23 || currentHour < 8 ) {
+            log.info("当前时间 {}点 不在任务执行时间范围内，跳过执行", currentHour);
+            return;
+        }
+        try {
+            String userInput = "使用英文，我需要你帮我生成一篇文章，标题你取，任意分类，标签为Spring，其他参数你自己配置，文章内容你自己发挥，但是不可以和最近生成的文章题材重合，创建好后发布到halo";
 
-
-
-        System.out.println("\n>>> Question: " + userInput);
-        System.out.println("\n>>> Assistant: " + chatClient.prompt(userInput).call().content());
-    }
-
-    @Test
-    public void test_workflow() {
-        String userInput = "使用英文，我需要你帮我生成一篇文章，标题你取，任意分类，标签为Spring，其他参数你自己配置，文章内容你自己发挥，但是不可以和最近生成的文章题材重合，创建好后发布到halo";
-//        userInput = """
+//            String userInput = """
 //                    我需要你帮我生成一篇文章，要求如下；
 //                    1. 场景为互联网大厂java求职者面试
 //                    2. 提问的技术栈如下；
@@ -71,9 +63,9 @@ public class MCPTest {
 //                        将以上内容发布文章到Halo
 //                    """;
 
-
-        System.out.println("\n>>> Question: " + userInput);
-        System.out.println("\n>>> Assistant: " + chatClient.prompt(userInput).call().content());
+            log.info("执行结果:{} {}", userInput, chatClient.prompt(userInput).call().content());
+        } catch (Exception e) {
+            log.error("定时任务，回调通知AI发帖失败", e);
+        }
     }
-
 }

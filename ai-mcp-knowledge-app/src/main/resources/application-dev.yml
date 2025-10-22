@@ -12,7 +12,8 @@ spring:
     mcp:
       client:
         stdio:
-          servers-configuration: classpath:/config/mcp-servers-config.json
+          servers-configuration: classpath:/config/mcp-servers-config-halo.json
+
     openai:
       base-url: https://api.deepseek.com
       api-key: sk-47ec934d53744bf0b8327ba65d98045f
