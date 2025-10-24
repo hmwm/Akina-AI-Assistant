@@ -49,8 +49,24 @@ spring:
 
 
 
+# MCP 客户端配置
+mcp:
+  client:
+    type: alipay  # 可选值: alipay, baidu, github
+  alipay:
+    app-id: your-alipay-app-id
+    app-key: your-alipay-app-key
+    pub-key: your-alipay-pub-key
+  baidu:
+    api-key: your-baidu-api-key
+    secret-key: your-baidu-secret-key
+  github:
+    token: your-github-token
+    api-url: https://api.github.com
+
 logging:
   level:
     root: info
+    com.akina.knowledge.mcp: debug  # 启用 MCP 客户端调试日志
   config: classpath:logback-spring.xml
 
