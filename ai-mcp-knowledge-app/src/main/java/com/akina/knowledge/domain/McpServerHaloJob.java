@@ -16,18 +16,63 @@ public class McpServerHaloJob {
     @Resource
     private ChatClient chatClient;
 
+    @PostConstruct
+    public void runAtStartup() {
+        log.info("====== 应用启动，立即执行第一次连载任务 ======");
+        exec();
+    }
 
-    // @Scheduled(cron = "0 */5 * * * ?")
-    @Scheduled(cron = "0 * * * * ?")
+//    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 0 * * * *")
     public void exec() {
         // 检查当前时间是否在执行的时间范围内（8点到23点之间）
-        int currentHour = LocalDateTime.now().getHour();
-        if (currentHour >= 23 || currentHour < 8 ) {
-            log.info("当前时间 {}点 不在任务执行时间范围内，跳过执行", currentHour);
-            return;
-        }
+//        int currentHour = LocalDateTime.now().getHour();
+//        if (currentHour >= 23 || currentHour < 8 ) {
+//            log.info("当前时间 {}点 不在任务执行时间范围内，跳过执行", currentHour);
+//            return;
+//        }
         try {
-            String userInput = "使用英文，我需要你帮我生成一篇文章，标题你取，任意分类，标签为Spring，其他参数你自己配置，文章内容你自己发挥，但是不可以和最近生成的文章题材重合，创建好后发布到halo";
+            String userInput = """
+                    你是一名负责连载现代都市网文小说的写作执行器。本次调用必须依次完成以下流程：
+                    
+                    =================【必须执行的动作】=================
+                    1）读取文件：read_text_file("E:\\MCP_test\\novel_outline.txt")
+                    2）判断文件内容：
+                       - 若为空或不存在：说明是第一次写作 → 创建小说名 + 初始大纲（20节起步） + 第1节正文
+                       - 若有内容：从中解析【小说名】【大纲】【当前进度】，继续写下一节正文并更新大纲与进度
+                    3）将更新后的完整大纲（不含正文）覆盖写回：write_file("E:\\MCP_test\\novel_outline.txt", updatedOutline)
+                    4）将新一节正文通过 queryHaloBlogConfig 发布文章
+                       - 标题由 AI 根据大纲和节序自行生成（不需要用户提供）
+                       - 文章内容为“本次生成的正文”
+                       - 其余参数设置由 AI 自行决定（例如标签、分类）
+                    
+                    =================【写作要求】=================
+                    - 现代都市网文风格
+                    - 每节约 200 字
+                    - 必须承接现有剧情（参考文件大纲，若无则开新故事）
+                    - 结尾必须留钩子（悬念/未决/拐点）
+                    - 正文中禁止出现“读者”“本节”“作者”等元叙事
+                    - 不得在对话中向用户解释，不得输出正文在返回内容中，只能通过发布服务提交
+                    
+                    =================【大纲文件格式规范】=================
+                    文件必须始终保持如下结构（无正文）：
+                    【小说名】
+                    xxxx
+                    
+                    【大纲】
+                    - 第1节：xxx
+                    - 第2节：xxx
+                    ……
+                    
+                    【当前进度】
+                    N
+                    
+                    =================【输出限制】=================
+                    你不得输出任何正文、解释或自然语言回答。
+                    你必须只输出 MCP 服务调用 JSON (read_text_file / write_file / queryHaloBlogConfig)，并严格按流程顺序执行。
+                    
+                    
+                    """;
 
 //            String userInput = """
 //                    我需要你帮我生成一篇文章，要求如下；

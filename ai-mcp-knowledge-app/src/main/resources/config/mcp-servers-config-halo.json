@@ -3,12 +3,23 @@
     "mcp-server-halo": {
       "command": "java",
       "args": [
+        "-Dfile.encoding=utf-8",
         "-Dspring.ai.mcp.server.stdio=true",
         "-jar",
         "C:\\Users\\HS200\\.m2\\repository\\com\\akina\\yaemiko-ai-mcp-server-HaloBlog\\1.0.0\\yaemiko-ai-mcp-server-HaloBlog-1.0.0.jar",
         "--halo.blog.base-url=https://yaemiko.live",
         "--halo.blog.pat=pat_eyJraWQiOiJ1eFZJZ1NtT2FWSmtIQkpmTUJXSmJ2U09FYzExSlQ3LTZnam1NWktGcXk4IiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJodHRwOi8vMTE3LjcyLjU0LjEwNDo4MDkwLyIsInN1YiI6InlhZW1pa28iLCJpYXQiOjE3NjEwMjg3MjQsImp0aSI6ImQ1M2ZkNDZhLWI0ZDQtODE5ZC0wYzNjLWM3OWExMzQzODc1NCIsInBhdF9uYW1lIjoicGF0LXJ2dm82ZnJ6In0.U1nBg9yI-jKnY3Y5mS7atCqVkIhi_sLrT5JhMWqPg0xr2-7N37FYtTFLSYfg-xXg97xcDZ5eFyzrgAO0tLBGeVQkPrNHQ-LR93iE-wi-xn_1W-aZbXD2FIxSAY6NmiLxkXZPDoRHQ3hl6KY_SMG7GaCm0Du_Lyd8u3E0Wg5Zxdw2mnZSWkW02NY-A-uChvrzyuWj104eqen_d3O-ByEuIRTLN4fjilhQD3nePsvhd25nHsBbijEo8kjtCsDtltrJdP-yL1nlxxil2DMrNq3ZHQaRjHl_TYo-CtpIRwL_uQD37KPaWnHeaFmtcpMO8_BK-x8w9ijdaJZ2iDkTG5zMQK2iQ2cXii6C-7tazmRo0pMXVkELCXiL2qWH1haJGgKyGwRMk7FtAMggOhIBXsyQPOnDZLFWUmLw0Z1Ae_rPGiVAJhFJDJkDN8a6q2glGxbInifnKS4gqtBuh1zhhqRCPcqnu66omfAPctWrqRd-oxeTH6DC6cIwDMpfoNmv12A5GXoF2iObrmOEu7uCHCh0MhswFWK2jJpKrAc92M5qQiXyGx_XfepolWPaVYCrfe7U-KN04YvK0XtP9ydMeD9h4oqqqm8DIdyT805ZN4KRH5ztnsCMCBoWY6sqayKyK2PrLOZDrm58NZMXNED8FoyNgy81TUaOEiHeYie6_lEIhoI",
         "--halo.blog.default-owner=admin"
+      ]
+    },
+    "filesystem": {
+      "command": "D:\\DevTools\\nodejs\\npx.cmd",
+      "args": [
+        "-y",
+        "--verbose",
+        "@modelcontextprotocol/server-filesystem",
+        "E:\\MCP_test",
+        "E:\\MCP_test"
       ]
     }
   }
