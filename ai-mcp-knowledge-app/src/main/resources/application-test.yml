@@ -11,7 +11,7 @@ spring:
   ai:
     openai:
       base-url: https://openai.qiniu.com
-      api-key: sk-cf7b0ee9493a412b3017ff29324363de403ba5d5fe2199383085d90434952c94
+      api-key:
       chat:
         options:
           model: gpt-oss-120b

@@ -17,14 +17,14 @@ spring:
 
     openai:
       base-url: https://api.deepseek.com
-      api-key: sk-47ec934d53744bf0b8327ba65d98045f
+      api-key:
       chat:
         options:
           model: deepseek-chat
           #aiml
 #    openai:
 #      base-url: https://api.aimlapi.com
-#      api-key: 67329b78eb0a480ca15390eab63a93a7
+#      api-key:
 #      chat:
 #        options:
 #          model: gpt-4o
@@ -39,7 +39,7 @@ spring:
           num-batch: 768
 #      七牛云
 #      base-url: https://openai.qiniu.com
-#      api-key: sk-cf7b0ee9493a412b3017ff29324363de403ba5d5fe2199383085d90434952c94
+#      api-key:
 #      chat:
 #        options:
 #          model: gpt-oss-120b
